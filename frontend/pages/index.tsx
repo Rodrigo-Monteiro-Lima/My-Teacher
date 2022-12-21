@@ -12,7 +12,7 @@ import { useIndex } from "../src/hooks/pages/useIndex";
       <Box sx={{backgroundColor: 'secondary.main'}}>
         <List teacher={teachersList} onSelect={(teacher) => setSelectedTeacher(teacher)}/>
       </Box>
-      <Dialog open={true} fullWidth PaperProps={{sx: {p: 5}}}>
+      <Dialog onClose={() => setSelectedTeacher(null)} open={selectedTeacher !== null} fullWidth PaperProps={{sx: {p: 5}}}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField 
@@ -34,7 +34,7 @@ import { useIndex } from "../src/hooks/pages/useIndex";
           </Grid>  
         </Grid>
         <DialogActions sx={{mt: 5}}>
-          <Button>Cancelar</Button>
+          <Button onClick={() => setSelectedTeacher(null)}>Cancelar</Button>
           <Button>Marcar</Button>
         </DialogActions>
       </Dialog>      
