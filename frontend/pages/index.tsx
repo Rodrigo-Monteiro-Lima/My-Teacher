@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
   if (loading) return <div>Loading...</div>
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer autoClose={1500}/>
       <Box sx={{backgroundColor: 'secondary.main'}}>
         <List teacher={teachersList} onSelect={(teacher) => setSelectedTeacher(teacher)}/>
       </Box>

@@ -10,6 +10,9 @@ export const useIndex = () => {
   const [email, setEmail] = useState('');
   const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
 
+  useEffect(() => {
+    clearForm();
+  }, [selectedTeacher]);
 
   useEffect(() => {
     ApiService.get('/teachers')
@@ -36,6 +39,11 @@ export const useIndex = () => {
     return name.length > 0 && email.length > 0;
   };
 
+  const clearForm = () => {
+    setEmail('');
+    setName('');
+  }
+
   return {
       teachersList,
       loading,
@@ -46,5 +54,6 @@ export const useIndex = () => {
       selectedTeacher,
       setSelectedTeacher,
       bookClass,
+      clearForm,
   }
 }
