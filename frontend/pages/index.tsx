@@ -4,13 +4,13 @@ import List from "../src/components/List";
 import { useIndex } from "../src/hooks/pages/useIndex";
 
  const Home: NextPage = () => {
-  const {teachersList, loading, name, email, setEmail, setName} = useIndex();
+  const { teachersList, loading, name, email, setEmail, setName, selectedTeacher, setSelectedTeacher } = useIndex();
 
   if (loading) return <div>Loading...</div>
   return (
     <div>
       <Box sx={{backgroundColor: 'secondary.main'}}>
-        <List teacher={teachersList}/>
+        <List teacher={teachersList} onSelect={(teacher) => setSelectedTeacher(teacher)}/>
       </Box>
       <Dialog open={true} fullWidth PaperProps={{sx: {p: 5}}}>
         <Grid container spacing={2}>
