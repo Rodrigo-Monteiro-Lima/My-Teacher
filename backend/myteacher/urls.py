@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app.views import HomeApiView
-from teacher.views import TeacherAPIView
+from teacher.views import TeacherAPIView, RegistrateClassAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeApiView.as_view()),
     path('teachers/', TeacherAPIView.as_view()),
+    path('teachers/<int:id>/classes', RegistrateClassAPIView.as_view()),
 ]
