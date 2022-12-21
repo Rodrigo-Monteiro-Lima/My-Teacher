@@ -15,6 +15,26 @@ export const useIndex = () => {
     .then((response) => setTeachersList(response.data)).finally(() => setLoading(false))
   }, [])
 
+  const bookClass = () => {
+    if (selectedTeacher !== null) {
+      if(validadeClassData()) {
+        ApiService.post(`/teachers/${selectedTeacher.id}/classes`, { name, email }).then(() => {
+          setSelectedTeacher(null)
+          alert('Cadastrado com sucesso');
+        }).catch((e) => {
+          alert(e.response?.data.message)
+        });
+      } else {
+        alert('Preencha os dados corretamente');
+      }
+      }
+    };
+
+
+  const validadeClassData = () =>{
+    return name.length > 0 && email.length > 0;
+  };
+
   return {
       teachersList,
       loading,
@@ -24,5 +44,6 @@ export const useIndex = () => {
       setEmail,
       selectedTeacher,
       setSelectedTeacher,
+      bookClass,
   }
 }

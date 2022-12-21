@@ -4,7 +4,7 @@ import List from "../src/components/List";
 import { useIndex } from "../src/hooks/pages/useIndex";
 
  const Home: NextPage = () => {
-  const { teachersList, loading, name, email, setEmail, setName, selectedTeacher, setSelectedTeacher } = useIndex();
+  const { teachersList, loading, name, email, setEmail, setName, selectedTeacher, setSelectedTeacher, bookClass } = useIndex();
 
   if (loading) return <div>Loading...</div>
   return (
@@ -35,7 +35,7 @@ import { useIndex } from "../src/hooks/pages/useIndex";
         </Grid>
         <DialogActions sx={{mt: 5}}>
           <Button onClick={() => setSelectedTeacher(null)}>Cancelar</Button>
-          <Button>Marcar</Button>
+          <Button onClick={() => bookClass()}>Marcar</Button>
         </DialogActions>
       </Dialog>      
     </div>
