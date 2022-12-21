@@ -4,8 +4,9 @@ import List from "../src/components/List";
 import { useIndex } from "../src/hooks/pages/useIndex";
 
  const Home: NextPage = () => {
-  const {teachersList} = useIndex();
+  const {teachersList, loading} = useIndex();
 
+  if (loading) return <div>Loading...</div>
   return (
     <Box sx={{backgroundColor: 'secondary.main'}}>
       <List teacher={teachersList}/>
