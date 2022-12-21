@@ -5,6 +5,8 @@ import { ApiService } from "../../services/ApiService";
 export const useIndex = () => {
   const [teachersList, setTeachersList] = useState<Teacher[]>([]);
   const [loading, setLoading] = useState(true);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     ApiService.get('/teachers')
@@ -14,5 +16,9 @@ export const useIndex = () => {
   return {
       teachersList,
       loading,
+      name,
+      setName,
+      email,
+      setEmail,
   }
 }
