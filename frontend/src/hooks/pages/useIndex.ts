@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Teacher } from "../../@types/teacher";
 import { ApiService } from "../../services/ApiService";
 
@@ -20,14 +21,14 @@ export const useIndex = () => {
       if(validadeClassData()) {
         ApiService.post(`/teachers/${selectedTeacher.id}/classes`, { name, email }).then(() => {
           setSelectedTeacher(null)
-          alert('Cadastrado com sucesso');
+          toast.success('Cadastrado com sucesso');
         }).catch((e) => {
-          alert(e.response?.data.message)
+          toast.error(e.response?.data.message);
         });
       } else {
-        alert('Preencha os dados corretamente');
+        toast.warning('Preencha os dados corretamente');
       }
-      }
+    }
     };
 
 

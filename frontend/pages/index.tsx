@@ -2,6 +2,8 @@ import { Box, Button, Dialog, DialogActions, Grid, TextField } from "@mui/materi
 import type { NextPage } from "next";
 import List from "../src/components/List";
 import { useIndex } from "../src/hooks/pages/useIndex";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
  const Home: NextPage = () => {
   const { teachersList, loading, name, email, setEmail, setName, selectedTeacher, setSelectedTeacher, bookClass } = useIndex();
@@ -9,6 +11,7 @@ import { useIndex } from "../src/hooks/pages/useIndex";
   if (loading) return <div>Loading...</div>
   return (
     <div>
+      <ToastContainer />
       <Box sx={{backgroundColor: 'secondary.main'}}>
         <List teacher={teachersList} onSelect={(teacher) => setSelectedTeacher(teacher)}/>
       </Box>
